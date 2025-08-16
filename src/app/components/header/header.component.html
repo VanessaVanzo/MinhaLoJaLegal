@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" fxLayoutAlign="space-between center" class="toolbar">
+  <span class="logo">Minha Loja Legal</span>
+
+  <button mat-icon-button [matMenuTriggerFor]="cartMenu">
+    <mat-icon [matBadge]="cartService.cart().length" matBadgeColor="accent" matBadgePosition="above after"
+      matBadgeSize="small">
+      shopping_cart
+    </mat-icon>
+  </button>
+
+  <mat-menu #cartMenu="matMenu" class="cart-menu">
+    <ng-container *ngIf="cartService.cart().length; else emptyCart">
+      <div *ngFor="let item of cartService.cart()" class="cart-item" fxLayout="row" fxLayoutAlign="start center"
+        fxLayoutGap="8px">
+        <img [src]="item.thumbnail" alt="{{ item.title }}" class="cart-item-img">
+        <div class="cart-item-info">
+          <span class="cart-item-title">{{ item.title }}</span>
+          <span class="cart-item-price">{{ item.price | currency:'BRL' }}</span>
+        </div>
+        <button mat-icon-button color="warn" (click)="cartService.removeFromCart(item.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" class="checkout-btn" (click)="checkout()">
+          Finalizar Compra
+        </button>
+        <button mat-stroked-button color="accent" (click)="cartService.clearCart()" class="clear-cart-btn">
+          Limpar Carrinho
+        </button>
+      </div>
+
+    </ng-container>
+
+    <ng-template #emptyCart>
+      <span class="empty">Carrinho vazio</span>
+    </ng-template>
+  </mat-menu>
+</mat-toolbar>

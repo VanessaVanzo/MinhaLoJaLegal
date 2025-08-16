@@ -1,0 +1,33 @@
+.product-detail-wrapper {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-image {
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.product-info h2 {
+  margin: 0 0 8px 0;
+}
+
+.product-info h3 {
+  margin: 0 0 16px 0;
+  color: #555;
+}
+
+.product-info p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.small-button {
+  width: 50%
+}
+
+.product-buttons {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}

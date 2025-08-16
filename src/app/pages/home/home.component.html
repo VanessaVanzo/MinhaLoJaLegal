@@ -1,0 +1,10 @@
+<div *ngIf="products().length > 0; else loading" fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="center stretch">
+  <div fxFlex="calc(25% - 12px)" fxFlex.md="calc(33.33% - 12px)" fxFlex.sm="calc(50% - 8px)" fxFlex.xs="100%"
+    *ngFor="let product of products()">
+    <app-card-produto-component [product]="product"></app-card-produto-component>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Carregando produtos...</p>
+</ng-template>
