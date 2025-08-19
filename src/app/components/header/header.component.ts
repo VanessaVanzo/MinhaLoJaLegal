@@ -9,6 +9,8 @@ import { CartServiceService } from '../../service/cart-service.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router'; // IMPORTANTE
+
 
 
 
@@ -24,26 +26,28 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     FlexLayoutModule,
     MatMenuModule,
     MatDividerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    RouterModule
+
 
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent  {
+export class HeaderComponent {
 
-  constructor(public cartService: CartServiceService) {}
+  constructor(public cartService: CartServiceService) { }
 
   get cartCount() {
     return this.cartService.cart;
   }
 
   checkout() {
-  // Aqui você pode redirecionar para a página de checkout ou abrir um modal
-  console.log('Finalizando compra', this.cartService.cart());
-  // Exemplo: limpar o carrinho após finalizar
-  // this.cartService.clearCart();
-}
+    // Aqui você pode redirecionar para a página de checkout ou abrir um modal
+    console.log('Finalizando compra', this.cartService.cart());
+    // Exemplo: limpar o carrinho após finalizar
+    // this.cartService.clearCart();
+  }
 
 }
 

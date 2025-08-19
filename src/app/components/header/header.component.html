@@ -1,5 +1,8 @@
 <mat-toolbar color="primary" fxLayoutAlign="space-between center" class="toolbar">
-  <span class="logo">Minha Loja Legal</span>
+  <a [routerLink]="['/']" style="text-decoration: none; color: inherit;">
+    <span class="logo">Minha Loja Legal</span>
+  </a>
+
 
   <button mat-icon-button [matMenuTriggerFor]="cartMenu">
     <mat-icon [matBadge]="cartService.cart().length" matBadgeColor="accent" matBadgePosition="above after"
@@ -23,10 +26,14 @@
       </div>
       <mat-divider></mat-divider>
 
-      <div fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="center center">
+      <a [routerLink]="['/formulario']" style="text-decoration: none; color: inherit;" fxLayoutAlign="center center">
         <button mat-raised-button color="primary" class="checkout-btn" (click)="checkout()">
           Finalizar Compra
         </button>
+      </a>
+
+      <div fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="center center">
+
         <button mat-stroked-button color="accent" (click)="cartService.clearCart()" class="clear-cart-btn">
           Limpar Carrinho
         </button>
