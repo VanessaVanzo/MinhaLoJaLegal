@@ -1,10 +1,23 @@
-<div *ngIf="products().length > 0; else loading" fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="center stretch">
+<div class="filter-container">
+  <mat-form-field appearance="outline" class="filter-input">
+    <mat-label>Filtrar produtos</mat-label>
+    <input matInput type="text" (input)="onFilterChange($event)">
+    <button *ngIf="filterTerm()" matSuffix mat-icon-button aria-label="Clear" (click)="filterTerm.set('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<!-- Lista filtrada -->
+<div *ngIf="filteredProducts().length > 0; else loading" fxLayout="row wrap" fxLayoutGap="16px"
+  fxLayoutAlign="center stretch">
+
   <div fxFlex="calc(25% - 12px)" fxFlex.md="calc(33.33% - 12px)" fxFlex.sm="calc(50% - 8px)" fxFlex.xs="100%"
-    *ngFor="let product of products()">
+    *ngFor="let product of filteredProducts()">
     <app-card-produto-component [product]="product"></app-card-produto-component>
   </div>
 </div>
 
 <ng-template #loading>
-  <p>Carregando produtos...</p>
+  <p>Nenhum produto encontrado...</p>
 </ng-template>
