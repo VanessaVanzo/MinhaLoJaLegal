@@ -1,0 +1,6 @@
+<h3 mat-dialog-title>Confirmação</h3>
+<mat-dialog-content>{{ data.message || 'Deseja realmente executar esta ação?' }}</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Não</button>
+  <button mat-button color="warn" (click)="confirm()">Sim</button>
+</mat-dialog-actions>

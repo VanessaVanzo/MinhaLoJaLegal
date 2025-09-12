@@ -1,0 +1,65 @@
+/* Container centralizado */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #3f51b5, #2196f3);
+}
+
+/* Card do login */
+.login-card {
+  width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+/* Inputs e selects */
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Mensagem de erro */
+.error-message {
+  color: red;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* Mensagem de sucesso */
+.success-message {
+  color: green;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* Ícones das mensagens */
+.error-message mat-icon,
+.success-message mat-icon {
+  margin-right: 8px;
+}
+
+/* Botões ocupando toda a largura */
+button.full-width {
+  width: 100%;
+}
+
+/* Estilo para tabs */
+.mat-tab-group {
+  margin-top: 16px;
+}
+
+/* Responsividade */
+@media (max-width: 450px) {
+  .login-card {
+    width: 90%;
+    padding: 16px;
+  }
+}

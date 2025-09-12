@@ -1,16 +1,20 @@
-<mat-toolbar color="primary" fxLayoutAlign="space-between center" class="toolbar">
+<mat-toolbar *ngIf="authService.isLoggedIn()" color="primary" fxLayoutAlign="space-between center" class="toolbar">
   <a [routerLink]="['/']" style="text-decoration: none; color: inherit;">
     <span class="logo">Minha Loja Legal</span>
   </a>
 
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="cartMenu">
+      <mat-icon [matBadge]="cartService.cart().length" matBadgeColor="accent" matBadgePosition="above after"
+        matBadgeSize="small">
+        shopping_cart
+      </mat-icon>
+    </button>
 
-  <button mat-icon-button [matMenuTriggerFor]="cartMenu">
-    <mat-icon [matBadge]="cartService.cart().length" matBadgeColor="accent" matBadgePosition="above after"
-      matBadgeSize="small">
-      shopping_cart
-    </mat-icon>
-  </button>
-
+    <button mat-icon-button (click)="logout()" aria-label="Sair">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
   <mat-menu #cartMenu="matMenu" class="cart-menu">
     <ng-container *ngIf="cartService.cart().length; else emptyCart">
       <div *ngFor="let item of cartService.cart()" class="cart-item" fxLayout="row" fxLayoutAlign="start center"

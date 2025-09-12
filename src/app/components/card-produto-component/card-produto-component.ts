@@ -5,22 +5,44 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router'; // IMPORTANTE
-
+import { CartServiceService } from '../../service/cart-service.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-card-produto-component',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule,FlexLayoutModule,RouterModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, FlexLayoutModule, RouterModule, MatIconModule, ConfirmDialogComponent],
   templateUrl: './card-produto-component.html',
   styleUrl: './card-produto-component.scss'
 })
-export class CardProdutoComponent{
+export class CardProdutoComponent {
 
   @Input() product!: Produtos;
 
-  addToCart(product: Produtos) {
-    console.log('Adicionar ao carrinho:', product);
-    // Aqui você pode chamar seu serviço de carrinho
+  constructor(
+    private cartService: CartServiceService,
+    private dialog: MatDialog) { }
+
+  addToCart(prod: Produtos) {
+    this.cartService.addToCart(prod);
   }
 
+  removerItemComConfirmacao(produto: Produtos) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '280px',
+      data: { message: 'Deseja realmente remover este item?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.removerItem(produto); // só executa se confirmar
+      }
+    });
+  }
+
+  removerItem(produto: Produtos) {
+    console.log(produto)
+  }
 }
