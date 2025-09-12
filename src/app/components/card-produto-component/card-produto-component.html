@@ -1,7 +1,24 @@
-<a [routerLink]="['/product', product.id]" style="text-decoration: none; color: inherit;">
+<a style="text-decoration: none; color: inherit;">
   <mat-card class="product-card">
     <img mat-card-image [src]="product.thumbnail" [alt]="product.title" />
     <mat-card-title>{{ product.title | uppercase }}</mat-card-title>
+    <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
+
     <mat-card-subtitle>{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</mat-card-subtitle>
+
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+      <button mat-icon-button color="primary" (click)="addToCart(product)" class="small-button">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="removerItemComConfirmacao(product)" class="small-button">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" (click)="addToCart(product)" class="small-button">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
   </mat-card>
+
 </a>
+<!--
+[routerLink]="['/product', product.id]" -->
