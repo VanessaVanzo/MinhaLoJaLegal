@@ -37,7 +37,9 @@ import { AuthService } from '../../service/auth.service';
 })
 export class HeaderComponent {
 
-  constructor(public cartService: CartServiceService, public authService: AuthService, private router: Router) { }
+  constructor(public cartService: CartServiceService, public authService: AuthService, private router: Router) {
+
+  }
 
   get cartCount() {
     return this.cartService.cart;

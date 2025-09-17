@@ -11,7 +11,7 @@ Sem ele, o sistema não conseguirá autenticar os usuários.
     Execute no terminal:
 
     ```bash
-    npx json-server --watch api/user.json --port 3000
+    npx json-server --watch api/api.json --port 3000
     ---
     O servidor será iniciado em: http://localhost:3000
 

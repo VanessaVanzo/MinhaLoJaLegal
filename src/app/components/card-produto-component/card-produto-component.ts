@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterModule } from '@angular/router'; // IMPORTANTE
+import { RouterModule } from '@angular/router';
 import { CartServiceService } from '../../service/cart-service.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-card-produto-component',
@@ -23,7 +24,9 @@ export class CardProdutoComponent {
 
   constructor(
     private cartService: CartServiceService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    public authService: AuthService
+  ) { }
 
   addToCart(prod: Produtos) {
     this.cartService.addToCart(prod);

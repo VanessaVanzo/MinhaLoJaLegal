@@ -1,7 +1,8 @@
-<mat-toolbar *ngIf="authService.isLoggedIn()" color="primary" fxLayoutAlign="space-between center" class="toolbar">
+<mat-toolbar color="primary" fxLayoutAlign="space-between center" class="toolbar">
   <a [routerLink]="['/']" style="text-decoration: none; color: inherit;">
     <span class="logo">Minha Loja Legal</span>
   </a>
+
 
   <div>
     <button mat-icon-button [matMenuTriggerFor]="cartMenu">
@@ -11,15 +12,21 @@
       </mat-icon>
     </button>
 
-    <button mat-icon-button (click)="logout()" aria-label="Sair">
+    <button *ngIf="this.authService.isLoggedIn()" mat-icon-button (click)="logout()" aria-label="Sair">
       <mat-icon>logout</mat-icon>
     </button>
+
+
+    <button *ngIf="!authService.isLoggedIn()" mat-icon-button [routerLink]="['/login']" aria-label="Login">
+      <mat-icon>login</mat-icon>
+    </button>
+
   </div>
   <mat-menu #cartMenu="matMenu" class="cart-menu">
     <ng-container *ngIf="cartService.cart().length; else emptyCart">
       <div *ngFor="let item of cartService.cart()" class="cart-item" fxLayout="row" fxLayoutAlign="start center"
         fxLayoutGap="8px">
-        <img [src]="item.thumbnail" alt="{{ item.title }}" class="cart-item-img">
+        <img [src]="item.image" alt="{{ item.title }}" class="cart-item-img">
         <div class="cart-item-info">
           <span class="cart-item-title">{{ item.title }}</span>
           <span class="cart-item-price">{{ item.price | currency:'BRL' }}</span>

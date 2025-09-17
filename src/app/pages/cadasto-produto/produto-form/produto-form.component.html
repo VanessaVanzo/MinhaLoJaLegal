@@ -1,0 +1,48 @@
+<form [formGroup]="produtoForm" (ngSubmit)="submit()" class="form-container">
+  <h1>Cadastro de Produtos</h1>
+  <!-- Título -->
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="title" required>
+  </mat-form-field>
+
+  <!-- Descrição -->
+  <mat-form-field appearance="fill">
+    <mat-label>Descrição</mat-label>
+    <textarea matInput formControlName="description" required></textarea>
+  </mat-form-field>
+
+  <!-- Preço -->
+  <mat-form-field appearance="fill">
+    <mat-label>Preço</mat-label>
+    <input matInput type="number" step="0.01" formControlName="price" required>
+  </mat-form-field>
+
+  <!-- Estoque -->
+  <mat-form-field appearance="fill">
+    <mat-label>Quantidade em Estoque</mat-label>
+    <input matInput type="number" formControlName="stock" required>
+  </mat-form-field>
+
+  <!-- Upload de Imagem -->
+  <div class="file-upload">
+    <label for="image">Imagem do Produto</label>
+    <input type="file" id="image" (change)="onFileSelected($event)">
+  </div>
+
+  <!-- Preview da imagem -->
+  <div *ngIf="imagePreview" class="image-preview">
+    <p>Preview da imagem:</p>
+    <img [src]="imagePreview" alt="Preview" width="150">
+  </div>
+
+  <!-- Data de Criação -->
+  <mat-form-field appearance="fill">
+    <mat-label>Data de Criação</mat-label>
+    <input matInput type="date" formControlName="createdAt" required>
+  </mat-form-field>
+
+  <!-- Botão -->
+  <button mat-raised-button color="primary" type="submit">Cadastrar Produto</button>
+
+</form>
