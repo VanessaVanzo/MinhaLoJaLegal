@@ -7,30 +7,42 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { Router, RouterModule } from '@angular/router'; // IMPORTANTE
+import { AuthService } from '../../service/auth.service';
+
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CardProdutoComponent, FlexLayoutModule, MatFormFieldModule,
+  imports: [
+    CommonModule,
+    CardProdutoComponent,
+    FlexLayoutModule,
+    MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule],
+    MatButtonModule,
+    RouterModule
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss'] // corrigido
 })
 export class HomeComponent {
-
-  constructor(private productService: ProductService) { }
-
-  // recebe o signal do service
-  products = this.productService.products;
 
   // termo do filtro
   filterTerm = signal('');
 
+  constructor(public productService: ProductService, public authService: AuthService) { }
+
+  // getter para os produtos
+  get products() {
+    return this.productService.products(); // já retorna o array atualizado
+  }
+
   // computed: recalcula a lista filtrada sempre que mudar produtos() ou filterTerm()
   filteredProducts = computed(() =>
-    this.products().filter(p =>
+    this.products.filter(p =>
       p.title.toLowerCase().includes(this.filterTerm().toLowerCase())
     )
   );
@@ -39,6 +51,5 @@ export class HomeComponent {
     const input = event.target as HTMLInputElement;
     this.filterTerm.set(input.value);
   }
-
 
 }

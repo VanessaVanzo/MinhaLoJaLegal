@@ -1,27 +1,49 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 import { Produtos } from '../models/produtos';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products = toSignal(
-    this.http.get<{ products: Produtos[] }>('https://dummyjson.com/products').pipe(
-      map(response => response.products.slice(0, 20))),
-    { initialValue: [] }
-  );
 
-  constructor(private http: HttpClient) {}
+  products = signal<Produtos[]>([]);
 
-  getProductById(id: number) {
-    return toSignal(
-      this.http.get<Produtos>(`https://dummyjson.com/products/${id}`),
-      { initialValue: undefined }
-    );
+  private apiUrl = 'http://localhost:3000/products';
+
+  constructor(private http: HttpClient) {
+    this.loadProducts();
   }
 
+  // Carregar produtos do backend
+  loadProducts() {
+    this.http.get<Produtos[]>(this.apiUrl)
+      .subscribe(produtos => this.products.set(produtos));
+  }
+
+  // Criar novo produto
+  createProduto(produto: Produtos): Observable<Produtos> {
+    return this.http.post<Produtos>(this.apiUrl, produto)
+      .pipe(
+        map(novoProduto => {
+          this.products.update(lista => [...lista, novoProduto]);
+          return novoProduto;
+        })
+      );
+  }
+
+  // Excluir produto
+  deleteProduto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`)
+      .pipe(
+        map(() => {
+          // Atualiza o Signal removendo o produto
+          this.products.update(lista => lista.filter(prod => prod.id !== id));
+        })
+      );
+  }
 }
+

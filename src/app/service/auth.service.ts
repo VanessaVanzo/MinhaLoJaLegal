@@ -33,4 +33,19 @@ export class AuthService {
     const u = localStorage.getItem('user');
     return u ? JSON.parse(u) : null;
   }
+
+  getUserRole(): string | null {
+    const user = localStorage.getItem('user');
+    if (user) {
+      try {
+        const userObj = JSON.parse(user);
+        return userObj.role || null;
+      } catch (error) {
+        console.error('Erro ao ler user do localStorage', error);
+        return null;
+      }
+    }
+    return null;
+  }
+
 }

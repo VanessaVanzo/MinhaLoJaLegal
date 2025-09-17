@@ -1,6 +1,6 @@
 <a style="text-decoration: none; color: inherit;">
   <mat-card class="product-card">
-    <img mat-card-image [src]="product.thumbnail" [alt]="product.title" />
+    <img mat-card-image [src]="product.image" [alt]="product.title" />
     <mat-card-title>{{ product.title | uppercase }}</mat-card-title>
     <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
 
@@ -10,12 +10,15 @@
       <button mat-icon-button color="primary" (click)="addToCart(product)" class="small-button">
         <mat-icon>add_shopping_cart</mat-icon>
       </button>
-      <button mat-icon-button color="warn" (click)="removerItemComConfirmacao(product)" class="small-button">
-        <mat-icon>delete</mat-icon>
-      </button>
-      <button mat-icon-button color="accent" (click)="addToCart(product)" class="small-button">
-        <mat-icon>edit</mat-icon>
-      </button>
+
+      <div *ngIf="authService.getUserRole() == 'admin'">
+        <button mat-icon-button color="warn" (click)="removerItemComConfirmacao(product)" class="small-button">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="addToCart(product)" class="small-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-card>
 

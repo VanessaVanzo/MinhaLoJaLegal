@@ -1,3 +1,8 @@
+<div *ngIf="authService.getUserRole() == 'admin'" class="button-container">
+  <button mat-raised-button color="primary" [routerLink]="['/cadastro-produto']">
+    <mat-icon>add</mat-icon> Cadastrar Produto
+  </button>
+</div>
 <div class="filter-container">
   <mat-form-field appearance="outline" class="filter-input">
     <mat-label>Filtrar produtos</mat-label>

@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": "51e3",
+      "name": "vanessa",
+      "email": "nfdfd@dfddfd",
+      "password": "123",
+      "role": "admin"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "title": "Notebook Dell Inspiron",
+      "description": "Notebook potente com 16GB RAM, SSD 512GB e processador i7.",
+      "createdAt": "2025-09-16T10:00:00Z",
+      "price": 3500.00,
+      "stock": 10,
+      "image": "assets/images/produto1.jpg"
+    },
+    {
+      "id": "p2",
+      "title": "Smartphone Samsung Galaxy",
+      "description": "Smartphone com câmera tripla, 128GB de memória e bateria de longa duração.",
+      "createdAt": "2025-09-15T12:30:00Z",
+      "price": 2500.00,
+      "stock": 25,
+      "image": "assets/images/produto2.jpg"
+    },
+    {
+      "id": "p3",
+      "title": "Fone de Ouvido Bluetooth",
+      "description": "Fones sem fio com cancelamento de ruído e som de alta qualidade.",
+      "createdAt": "2025-09-14T09:15:00Z",
+      "price": 199.90,
+      "stock": 50,
+      "image": "assets/images/produto3.jpg"
+    },
+    {
+      "id": "p4",
+      "title": "Monitor LG Ultrawide 29''",
+      "description": "Monitor ultrawide Full HD, ideal para produtividade e jogos.",
+      "createdAt": "2025-09-10T14:00:00Z",
+      "price": 1200.00,
+      "stock": 8,
+      "image": "assets/images/produto4.jpg"
+    },
+    {
+      "id": "p5",
+      "title": "Teclado Mecânico Gamer",
+      "description": "Teclado com switches mecânicos, retroiluminação RGB e design ergonômico.",
+      "createdAt": "2025-09-12T16:45:00Z",
+      "price": 350.00,
+      "stock": 20,
+      "image": "assets/images/produto5.jpg"
+    }
+  ]
+}
