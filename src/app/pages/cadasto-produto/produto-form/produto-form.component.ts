@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Produtos } from '../../../models/produtos';
 import { ProductService } from '../../../service/product-service.service';
+import { Router, RouterModule } from '@angular/router'; // IMPORTANTE
+
 
 @Component({
   selector: 'app-produto-form',
@@ -15,7 +17,8 @@ import { ProductService } from '../../../service/product-service.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './produto-form.component.html',
   styleUrls: ['./produto-form.component.scss']
@@ -35,44 +38,43 @@ export class ProdutoFormComponent {
     });
   }
 
-  // Upload de imagem
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-        this.produtoForm.patchValue({ image: `assets/images/${file.name}` });
-      };
-      reader.readAsDataURL(file);
-
-      // Aqui você deve salvar o arquivo na pasta assets ou enviar para backend
-      // Se quiser salvar localmente, você precisaria de backend para receber o arquivo
-    }
-  }
 
   submit() {
     if (this.produtoForm.valid) {
       const novoProduto: Produtos = this.produtoForm.value;
 
-      // Chama o service para salvar na API
       this.produtoService.createProduto(novoProduto).subscribe({
         next: (res) => {
           console.log('Produto cadastrado com sucesso:', res);
+
+          alert('Produto cadastrado com sucesso!');
+
+          // Reseta o formulário com valores válidos para os validators
           this.produtoForm.reset({
-            createdAt: new Date().toISOString().substring(0, 10),
+            title: ' ',
+            description: ' ',
             price: 0,
-            stock: 0
+            stock: 0,
+            image: ' ',
+            createdAt: new Date().toISOString().substring(0, 10)
           });
-          this.imagePreview = null;
+
+          // Marca tudo como pristine e untouched
+          this.produtoForm.markAsPristine();
+          this.produtoForm.markAsUntouched();
         },
         error: (err) => {
           console.error('Erro ao cadastrar produto:', err);
+          alert('Ocorreu um erro ao cadastrar o produto.');
         }
       });
     } else {
       this.produtoForm.markAllAsTouched();
+      alert('Por favor, preencha todos os campos obrigatórios.');
     }
   }
+
+
 }
+
 

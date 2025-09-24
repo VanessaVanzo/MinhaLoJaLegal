@@ -10,49 +10,57 @@
   ],
   "products": [
     {
-      "id": "p1",
+      "id": "1",
       "title": "Notebook Dell Inspiron",
-      "description": "Notebook potente com 16GB RAM, SSD 512GB e processador i7.",
-      "createdAt": "2025-09-16T10:00:00Z",
-      "price": 3500.00,
-      "stock": 10,
-      "image": "assets/images/produto1.jpg"
+      "description": "Notebook moderno com processador rápido e ótimo desempenho para trabalho e estudos.",
+      "price": 3500,
+      "quantity": 8,
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+      "createdAt": "2025-09-21"
     },
     {
-      "id": "p2",
-      "title": "Smartphone Samsung Galaxy",
-      "description": "Smartphone com câmera tripla, 128GB de memória e bateria de longa duração.",
-      "createdAt": "2025-09-15T12:30:00Z",
-      "price": 2500.00,
-      "stock": 25,
-      "image": "assets/images/produto2.jpg"
-    },
-    {
-      "id": "p3",
-      "title": "Fone de Ouvido Bluetooth",
-      "description": "Fones sem fio com cancelamento de ruído e som de alta qualidade.",
-      "createdAt": "2025-09-14T09:15:00Z",
-      "price": 199.90,
-      "stock": 50,
-      "image": "assets/images/produto3.jpg"
-    },
-    {
-      "id": "p4",
-      "title": "Monitor LG Ultrawide 29''",
-      "description": "Monitor ultrawide Full HD, ideal para produtividade e jogos.",
-      "createdAt": "2025-09-10T14:00:00Z",
-      "price": 1200.00,
+      "title": "Smartphone Samsung Galaxy novo",
+      "description": "Celular de última geração com câmera de alta resolução e bateria de longa duração.",
+      "price": 2500,
       "stock": 8,
-      "image": "assets/images/produto4.jpg"
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "id": "2"
     },
     {
-      "id": "p5",
-      "title": "Teclado Mecânico Gamer",
-      "description": "Teclado com switches mecânicos, retroiluminação RGB e design ergonômico.",
-      "createdAt": "2025-09-12T16:45:00Z",
-      "price": 350.00,
-      "stock": 20,
-      "image": "assets/images/produto5.jpg"
+      "id": "3",
+      "title": "Fone de Ouvido Bluetooth",
+      "description": "Fones sem fio com cancelamento de ruído e até 20h de duração da bateria.",
+      "price": 350,
+      "quantity": 30,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+      "createdAt": "2025-09-21"
+    },
+    {
+      "id": "4",
+      "title": "Mochila Executiva",
+      "description": "Mochila ergonômica com compartimento para notebook e material resistente à água.",
+      "price": 280,
+      "quantity": 20,
+      "image": "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3",
+      "createdAt": "2025-09-21"
+    },
+    {
+      "id": "5",
+      "title": "Câmera Fotográfica Canon",
+      "description": "Câmera DSLR profissional com lente intercambiável e alta definição de imagem.",
+      "price": 4200,
+      "quantity": 5,
+      "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "createdAt": "2025-09-21"
+    },
+    {
+      "id": "6",
+      "title": "Teclado Multimídia HP K2000",
+      "description": "Teclado USB com design ergonômico, teclas silenciosas e atalhos multimídia para facilitar o uso diário.",
+      "price": 120,
+      "stock": 10,
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+      "createdAt": "2025-09-23"
     }
   ]
 }
