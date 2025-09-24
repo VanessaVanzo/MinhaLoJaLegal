@@ -4,6 +4,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './auth.guard';
 import { ProdutoFormComponent } from './pages/cadasto-produto/produto-form/produto-form.component';
+import { EditarProdutoComponent } from './pages/editar-produto/editar-produto.component';
 
 export const routes: Routes = [
 
@@ -11,6 +12,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'formulario', component: FormularioComponent, canActivate: [authGuard] },
   { path: 'cadastro-produto', component: ProdutoFormComponent, canActivate: [authGuard] },
+  { path: 'editar-produto/:id', component: EditarProdutoComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' }                // rota curinga
 ];

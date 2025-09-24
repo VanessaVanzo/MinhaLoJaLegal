@@ -24,11 +24,11 @@
     <input matInput type="number" formControlName="stock" required>
   </mat-form-field>
 
-  <!-- Upload de Imagem -->
-  <div class="file-upload">
-    <label for="image">Imagem do Produto</label>
-    <input type="file" id="image" (change)="onFileSelected($event)">
-  </div>
+  <!-- URL Imagem -->
+  <mat-form-field appearance="fill">
+    <mat-label>Link Imagem do Produto</mat-label>
+    <input matInput formControlName="image" required>
+  </mat-form-field>
 
   <!-- Preview da imagem -->
   <div *ngIf="imagePreview" class="image-preview">

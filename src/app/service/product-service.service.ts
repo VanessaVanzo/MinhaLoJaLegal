@@ -36,7 +36,9 @@ export class ProductService {
   }
 
   // Excluir produto
-  deleteProduto(id: number): Observable<void> {
+  deleteProduto(id: string): Observable<void> {
+    console.log('Tentando deletar produto com id:', id);
+
     return this.http.delete<void>(`${this.apiUrl}/${id}`)
       .pipe(
         map(() => {
@@ -45,5 +47,22 @@ export class ProductService {
         })
       );
   }
+
+  // Buscar produto por ID
+  getProdutoById(id: string) {
+    return this.http.get<Produtos>(`${this.apiUrl}/${id}`);
+  }
+
+  // Atualizar produto
+  updateProduto(id: string, produto: Produtos) {
+    return this.http.put<Produtos>(`${this.apiUrl}/${id}`, produto)
+      .pipe(
+        map(updated => {
+          this.products.update(lista => lista.map(p => p.id === id ? updated : p));
+          return updated;
+        })
+      );
+  }
+
 }
 

@@ -8,7 +8,7 @@ export class CartServiceService {
 
   constructor() { }
 
-   // Signal que mantém a lista de produtos no carrinho
+  // Signal que mantém a lista de produtos no carrinho
   private _cart = signal<Produtos[]>([]);
 
   // Exposição do signal apenas para leitura
@@ -23,7 +23,7 @@ export class CartServiceService {
   }
 
   // Remover produto
-  removeFromCart(productId: number) {
+  removeFromCart(productId: string) {
     this._cart.update(current => current.filter(p => p.id !== productId));
   }
 

@@ -10,11 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AuthService } from '../../service/auth.service';
+import { ProductService } from '../../service/product-service.service';
+
 
 @Component({
   selector: 'app-card-produto-component',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, FlexLayoutModule, RouterModule, MatIconModule, ConfirmDialogComponent],
+  imports: [CommonModule, MatCardModule, MatButtonModule, FlexLayoutModule, RouterModule, MatIconModule],
   templateUrl: './card-produto-component.html',
   styleUrl: './card-produto-component.scss'
 })
@@ -25,7 +27,9 @@ export class CardProdutoComponent {
   constructor(
     private cartService: CartServiceService,
     private dialog: MatDialog,
-    public authService: AuthService
+    public authService: AuthService,
+    public productService: ProductService
+
   ) { }
 
   addToCart(prod: Produtos) {
@@ -46,6 +50,13 @@ export class CardProdutoComponent {
   }
 
   removerItem(produto: Produtos) {
-    console.log(produto)
+    this.productService.deleteProduto(produto.id).subscribe({
+      next: () => {
+        console.log('Produto deletado com sucesso!');
+      },
+      error: (err) => {
+        console.error('Erro ao deletar produto', err);
+      }
+    });
   }
 }
