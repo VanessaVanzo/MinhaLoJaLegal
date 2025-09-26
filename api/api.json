@@ -3,9 +3,16 @@
     {
       "id": "51e3",
       "name": "vanessa",
-      "email": "nfdfd@dfddfd",
+      "email": "vanessa@gmail.com",
       "password": "123",
       "role": "admin"
+    },
+    {
+      "id": "5fcc",
+      "name": "Jose",
+      "email": "jose@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "products": [
@@ -54,13 +61,12 @@
       "createdAt": "2025-09-21"
     },
     {
-      "id": "6",
       "title": "Teclado Multimídia HP K2000",
       "description": "Teclado USB com design ergonômico, teclas silenciosas e atalhos multimídia para facilitar o uso diário.",
-      "price": 120,
+      "price": 125,
       "stock": 10,
       "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
-      "createdAt": "2025-09-23"
+      "id": "6"
     }
   ]
 }

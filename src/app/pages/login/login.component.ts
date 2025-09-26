@@ -56,6 +56,9 @@ export class LoginComponent {
 
   onSubmitLogin() {
     const { username, password } = this.loginForm.value;
+
+    console.log(username)
+    console.log(password)
     this.authService.login(username, password).subscribe(success => {
       if (success) {
         this.router.navigate(['/dashboard']);

@@ -1,24 +1,32 @@
 <mat-toolbar color="primary" fxLayoutAlign="space-between center" class="toolbar">
+
+
   <a [routerLink]="['/']" style="text-decoration: none; color: inherit;">
     <span class="logo">Minha Loja Legal</span>
   </a>
 
+  <div fxLayoutAlign="space-between center">
+    <ng-container *ngIf="authService.getUser()?.name; else naoLogado">
+      <h3>Bem-vindo {{ authService.getUser()?.name }}!</h3>
+    </ng-container>
 
-  <div>
-    <button mat-icon-button [matMenuTriggerFor]="cartMenu">
+    <ng-template #naoLogado>
+      <h3>Bem-vindo visitante!</h3>
+    </ng-template> <button mat-icon-button [matMenuTriggerFor]="cartMenu">
+
       <mat-icon [matBadge]="cartService.cart().length" matBadgeColor="accent" matBadgePosition="above after"
         matBadgeSize="small">
         shopping_cart
       </mat-icon>
     </button>
 
-    <button *ngIf="this.authService.isLoggedIn()" mat-icon-button (click)="logout()" aria-label="Sair">
+    <button *ngIf="this.authService.isLoggedIn()" mat-icon-button (click)="logout()" title="Sair">
       <mat-icon>logout</mat-icon>
     </button>
 
 
-    <button *ngIf="!authService.isLoggedIn()" mat-icon-button [routerLink]="['/login']" aria-label="Login">
-      <mat-icon>login</mat-icon>
+    <button *ngIf="!authService.isLoggedIn()" mat-icon-button [routerLink]="['/login']" title="Login">
+      <mat-icon>logins</mat-icon>
     </button>
 
   </div>

@@ -10,16 +10,23 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.get<User[]>(`${this.apiUrl}?username=${username}&password=${password}`)
-      .pipe(map(users => {
-        if (users.length > 0) {
-          localStorage.setItem('user', JSON.stringify(users[0]));
+    return this.http.get<User[]>(`${this.apiUrl}`).pipe(
+      map(users => {
+        // procura usuário que bate com username e password
+        const user = users.find(
+          u => u.name === username && u.password === password
+        );
+
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user));
           return true;
         } else {
           return false;
         }
-      }));
+      })
+    );
   }
+
 
   logout() {
     localStorage.removeItem('user');
